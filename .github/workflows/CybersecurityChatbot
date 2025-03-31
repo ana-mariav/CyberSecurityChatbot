@@ -113,16 +113,61 @@ catch (Exception ex)
 
     private static void RunChatLoop(string userName)
     {
-     
+      bool continueChat = true;
+
+ while (continueChat)
+ {
+     Console.ForegroundColor = userColor;
+     Console.Write($"\n{userName}: ");
+     string input = Console.ReadLine();
+     Console.ResetColor();
+
+     if (string.IsNullOrWhiteSpace(input))
+     {
+         Console.ForegroundColor = warningColor;
+         Console.WriteLine("Bot: I didn't receive any input. Please try again.");
+         Console.ResetColor();
+         continue;
+     }
+
+     if (input.Equals("bye", StringComparison.OrdinalIgnoreCase))
+     {
+         continueChat = false;
+         Console.ForegroundColor = botColor;
+         TypingEffect($"Bot: Goodbye, {userName}! Remember to stay safe online!", botColor);
+         Console.ResetColor();
+         continue;
+     }
+
+     string response = GetResponse(input);
+     Console.ForegroundColor = botColor;
+     TypingEffect("Bot: " + response, botColor);
+     Console.ResetColor();
+ }
     }
 
     private static string GetResponse(string input)
     {
-       
+       foreach (var pair in knowledgeBase)
+{
+    if (input.Contains(pair.Key, StringComparison.OrdinalIgnoreCase))
+    {
+        return pair.Value;
+    }
+}
+
+return "I didn't quite understand that. I can help with password safety, phishing, and safe browsing. Could you rephrase or ask about one of these topics?";
     }
 
     private static void TypingEffect(string text, ConsoleColor color)
     {
-       
+        Console.ForegroundColor = color;
+ foreach (char c in text)
+ {
+     Console.Write(c);
+     Thread.Sleep(20); // error handling for the user's typing speed.
+ }
+ Console.WriteLine();
+ Console.ResetColor();
     }
 }
