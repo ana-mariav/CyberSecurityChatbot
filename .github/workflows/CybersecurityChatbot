@@ -27,24 +27,88 @@ class CybersecurityChatbot
 
     static void Main(string[] args)
     {
-       
+       Console.Title = "Cybersecurity Awareness Chatbot";
+Console.Clear();
+
+
+// this plays the .wav voice note I recorded upon initialization
+PlayVoiceGreeting();
+
+// this function displays ASCII art
+DisplayAsciiArt();
+
+// here I get the user's name and personalize interactions
+string userName = GetUserName();
+
+//loop for the chats
+RunChatLoop(userName);
     }
 
-
+//this function plays the wav recording
     private static void PlayVoiceGreeting()
     {
-      
+      try
+{
+    SoundPlayer player = new SoundPlayer("greeting.wav");
+    player.Play();
+
+    // this is to display the loading message while the .wav recording plays
+    TypingEffect("Initializing Cybersecurity Awareness Bot...", titleColor);
+    Thread.Sleep(3000); // Wait for audio to complete
+}
+catch (Exception ex)
+{
+    Console.ForegroundColor = warningColor;
+    Console.WriteLine("\n[Note: Couldn't play voice greeting. Error: " + ex.Message + "]");
+    Console.ResetColor();
+}
     }
     
     //my ascii art displays on chill because my chatbot is chilling
     private static void DisplayAsciiArt()
     {
-   
+      Console.ForegroundColor = titleColor;
+   Console.WriteLine(@"
+  ___   _   _    ____ _   _   ___ _     _     
+ / _ \ | \ | |   / ___| | | | |_ _| |   | |    
+| | | ||  \| |  | |   | |_| |  | || |   | |    
+| |_| || |\  |  | |___|  _  |  | || |___| |___ 
+ \___/ |_| \_|   \____|_| |_| |___|_____|_____|
+                                                                        
+   ");
+   Console.ResetColor();
+
+   Console.ForegroundColor = infoColor;
+   Console.WriteLine("Your personal guide to online safety and security");
+   Console.WriteLine("=================================================");
+   Console.ResetColor();
     }
 
     private static string GetUserName()
     {
-       
+        string userName = "";
+ while (string.IsNullOrWhiteSpace(userName))
+ {
+     TypingEffect("\nBefore we begin, what should I call you? ", botColor);
+     Console.ForegroundColor = userColor;
+     userName = Console.ReadLine();
+     Console.ResetColor();
+
+     if (string.IsNullOrWhiteSpace(userName))
+     {
+         Console.ForegroundColor = warningColor;
+         Console.WriteLine("Please enter a valid name.");
+         Console.ResetColor();
+     }
+ }
+
+ Console.ForegroundColor = botColor;
+ TypingEffect($"\nWelcome, {userName}! I'm your Cybersecurity Awareness Assistant.", botColor);
+ TypingEffect("You can ask me about password safety, phishing, safe browsing, or general cybersecurity tips.", botColor);
+ TypingEffect("Type 'bye' to exit at any time.\n", botColor);
+ Console.ResetColor();
+
+ return userName;
     }
 
     private static void RunChatLoop(string userName)
