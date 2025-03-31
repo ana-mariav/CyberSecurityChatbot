@@ -1,0 +1,64 @@
+
+
+//this is the class I created
+class CybersecurityChatbot
+{
+    // Colour definitions for console output
+    private static ConsoleColor titleColor = ConsoleColor.Cyan;
+    private static ConsoleColor botColor = ConsoleColor.Green;
+    private static ConsoleColor userColor = ConsoleColor.Yellow;
+    private static ConsoleColor warningColor = ConsoleColor.Red;
+    private static ConsoleColor infoColor = ConsoleColor.Blue;
+
+    // this is the knowledge base for my chatbot
+    private static Dictionary<string, string> knowledgeBase = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+    {
+        {"hello", "Hello! I'm here to help you with cybersecurity awareness."},
+        {"hi", "Hi there! Ready to learn about online safety?"},
+        {"how are you", "I'm just a bot, but I'm functioning perfectly to help you stay secure!"},
+        {"what's your purpose", "My purpose is to educate you about cybersecurity best practices."},
+        {"what can I ask you", "You can ask me about password safety, phishing, safe browsing, or general cybersecurity tips."},
+        {"password safety", "Strong passwords should be at least 12 characters, unique for each account, and include a mix of letters, numbers, and symbols."},
+        {"phishing", "Phishing is when attackers try to trick you into giving sensitive information. Always verify sender emails and never click suspicious links."},
+        {"safe browsing", "Use HTTPS websites, keep your browser updated, and be cautious with downloads. Consider using a VPN on public Wi-Fi."},
+        {"thank you", "You're welcome! Stay safe online!"},
+        {"bye", "Goodbye! Remember to practice good cybersecurity habits!"}
+    };
+
+    static void Main(string[] args)
+    {
+       
+    }
+
+
+    private static void PlayVoiceGreeting()
+    {
+      
+    }
+    
+    //my ascii art displays on chill because my chatbot is chilling
+    private static void DisplayAsciiArt()
+    {
+   
+    }
+
+    private static string GetUserName()
+    {
+       
+    }
+
+    private static void RunChatLoop(string userName)
+    {
+     
+    }
+
+    private static string GetResponse(string input)
+    {
+       
+    }
+
+    private static void TypingEffect(string text, ConsoleColor color)
+    {
+       
+    }
+}
